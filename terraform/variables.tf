@@ -65,6 +65,7 @@ variable "oci_identity_availability_domain" {
 ########################OBJECT_STORAGE########################
 variable "bucket_name" {
   default = "py4dev"
+  description="Object storage name to create bucket. "
 }
 
 ########################GOVERNANCE########################
@@ -72,6 +73,7 @@ variable "region" {
 }
 
 variable "compartment_ocid" {
+  description="Compartment OCID where the resources will be created."
 }
 
 variable "tenancy_ocid" {
