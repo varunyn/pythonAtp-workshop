@@ -27,14 +27,14 @@ resource "oci_core_default_route_table" "default-route-table-options" {
 }
 
 resource "oci_core_subnet" "test_subnet" {
-  cidr_block          = "10.0.2.0/24"
-  display_name        = var.subnet_display_name
-  dns_label           = "p4dsubnet"
-  security_list_ids   = [oci_core_security_list.securitylist1.id]
-  compartment_id = var.compartment_ocid
-  vcn_id              = oci_core_vcn.py4devvcn.id
-  route_table_id      = oci_core_vcn.py4devvcn.default_route_table_id
-  dhcp_options_id     = oci_core_vcn.py4devvcn.default_dhcp_options_id
+  cidr_block        = "10.0.2.0/24"
+  display_name      = var.subnet_display_name
+  dns_label         = "p4dsubnet"
+  security_list_ids = [oci_core_security_list.securitylist1.id]
+  compartment_id    = var.compartment_ocid
+  vcn_id            = oci_core_vcn.py4devvcn.id
+  route_table_id    = oci_core_vcn.py4devvcn.default_route_table_id
+  dhcp_options_id   = oci_core_vcn.py4devvcn.default_dhcp_options_id
 }
 
 resource "oci_core_security_list" "securitylist1" {
