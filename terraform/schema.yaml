@@ -20,12 +20,15 @@ variableGroups:
       - autonomous_database_admin_password
 
   - title: Compute
-    visible: true
+    visible:
+      and:
+        - show_advanced
     variables:
       - instance_display_name
       - instance_shape
       - instance_shape_config_ocpus
       - instance_shape_config_memory_in_gbs
+      - ssh_public_key
 
   - title: Network
     visible: true
@@ -202,3 +205,9 @@ variables:
             - eq:
                 - instance_shape
                 - "VM.Optimized3.Flex"
+
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    title: "Public SSH Key"
+    description: "Choose public SSH Key to be uploaded into compute instances."
+    required: false

@@ -54,8 +54,9 @@ No modules.
 | <a name="input_instance_display_name"></a> [instance\_display\_name](#input\_instance\_display\_name) | n/a | `string` | `"AlphaOffice"` | no |
 | <a name="input_instance_shape"></a> [instance\_shape](#input\_instance\_shape) | n/a | `string` | `"VM.Standard2.1"` | no |
 | <a name="input_internet_gateway_display_name"></a> [internet\_gateway\_display\_name](#input\_internet\_gateway\_display\_name) | n/a | `string` | `"internet_gateway"` | no |
-| <a name="input_oci_identity_availability_domain"></a> [oci\_identity\_availability\_domain](#input\_oci\_identity\_availability\_domain) | n/a | `any` | n/a | yes |
+| <a name="input_oci_identity_availability_domain"></a> [oci\_identity\_availability\_domain](#input\_oci\_identity\_availability\_domain) | Availability domain for placing compute instance. | `any` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | #######################GOVERNANCE######################## | `any` | n/a | yes |
+| <a name="input_ssh_public_key"></a> [ssh\_public\_key](#input\_ssh\_public\_key) | public SSH Key to be uploaded into compute instances | `string` | `""` | no |
 | <a name="input_subnet_display_name"></a> [subnet\_display\_name](#input\_subnet\_display\_name) | n/a | `string` | `"py4devSubnet"` | no |
 | <a name="input_tenancy_ocid"></a> [tenancy\_ocid](#input\_tenancy\_ocid) | n/a | `any` | n/a | yes |
 | <a name="input_use_marketplace_image"></a> [use\_marketplace\_image](#input\_use\_marketplace\_image) | n/a | `number` | `1` | no |

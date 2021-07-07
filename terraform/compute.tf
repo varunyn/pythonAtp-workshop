@@ -23,23 +23,23 @@ resource "oci_core_instance" "developer_instance" {
   display_name        = var.instance_display_name
   shape               = var.instance_shape
 
-  extended_metadata = {
-    ssh_authorized_keys = tls_private_key.public_private_key_pair.public_key_openssh
+  metadata = {
+    ssh_authorized_keys = var.ssh_public_key == "" ? tls_private_key.public_private_key_pair.public_key_openssh : var.ssh_public_key
   }
 
   dynamic "shape_config" {
-      for_each = local.is_flexible_node_shape ? [1] : []
-      content {
-        memory_in_gbs = var.InstanceFlexShapeMemory
-        ocpus         = var.InstanceFlexShapeOCPUS
-      }
+    for_each = local.is_flexible_node_shape ? [1] : []
+    content {
+      memory_in_gbs = var.InstanceFlexShapeMemory
+      ocpus         = var.InstanceFlexShapeOCPUS
     }
+  }
 
   source_details {
     source_type = "image"
     source_id   = data.oci_core_app_catalog_subscriptions.CloudDevImg_catalog_subscriptions.app_catalog_subscriptions[0]["listing_resource_id"]
   }
-  
+
 
 
   create_vnic_details {

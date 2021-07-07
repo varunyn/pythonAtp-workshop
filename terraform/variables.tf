@@ -60,12 +60,13 @@ variable "subnet_display_name" {
 }
 
 variable "oci_identity_availability_domain" {
+  description = "Availability domain for placing compute instance. "
 }
 
 ########################OBJECT_STORAGE########################
 variable "bucket_name" {
-  default = "py4dev"
-  description="Object storage name to create bucket. "
+  default     = "py4dev"
+  description = "Object storage name to create bucket. "
 }
 
 ########################GOVERNANCE########################
@@ -73,9 +74,13 @@ variable "region" {
 }
 
 variable "compartment_ocid" {
-  description="Compartment OCID where the resources will be created."
+  description = "Compartment OCID where the resources will be created."
 }
 
 variable "tenancy_ocid" {
 }
 
+variable "ssh_public_key" {
+  default     = ""
+  description = "public SSH Key to be uploaded into compute instances"
+}
