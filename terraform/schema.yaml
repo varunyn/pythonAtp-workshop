@@ -1,0 +1,204 @@
+title: "Python ATP workshop"
+stackDescription: Deploy resources in Oracle Cloud Infrastructure
+schemaVersion: 1.1.0
+version: "20190404"
+locale: "en"
+
+variableGroups:
+  - title: General Configuration
+    visible: false
+    variables:
+      - tenancy_ocid
+      - region
+
+  - title: Required Variables
+    visible: true
+    variables:
+      - compartment_ocid
+      - oci_identity_availability_domain
+      - vncpasswd
+      - autonomous_database_admin_password
+
+  - title: Compute
+    visible: true
+    variables:
+      - instance_display_name
+      - instance_shape
+      - instance_shape_config_ocpus
+      - instance_shape_config_memory_in_gbs
+
+  - title: Network
+    visible: true
+    variables:
+      - vcn_display_name
+      - internet_gateway_display_name
+      - subnet_display_name
+
+  - title: Database
+    visible: true
+    variables:
+      - autonomous_database_display_name
+      - autonomous_database_db_name
+      - autonomous_database_data_storage_size_in_tbs
+      - autonomous_database_cpu_core_count
+      - autonomous_database_db_workload
+
+  - title: Object Storage
+    visible: true
+    variables:
+      - bucket_name
+
+variables:
+  autonomous_database_data_storage_size_in_tbs:
+    type: string
+    required: true
+    title: Database storage size
+    description: The storage required for the database instance.
+    default: "1"
+
+  autonomous_database_cpu_core_count:
+    type: string
+    required: true
+    title: Database node size count
+    description: The number of nodes used for the database instance.
+    default: "1"
+
+  autonomous_database_db_workload:
+    type: string
+    required: true
+    title: Database Workload
+    description:
+    default: "OLTP"
+
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    title: Compartment
+    description: Compartment where you want to create the solution resources
+
+  region:
+    type: oci:identity:region:name
+    required: true
+    title: Region
+    description: Region where you want to deploy the resources defined by this stack
+
+  instance_display_name:
+    type: string
+    required: true
+    title: Instance Name
+    description: Display Name for Compute Instance
+
+  autonomous_database_display_name:
+    type: string
+    required: true
+    title: Database Display Name
+    description: Display name that will be assigned to Autonomous Database
+
+  autonomous_database_db_name:
+    type: string
+    required: true
+    title: Database Name
+    description: Database name that will be assigned to Autonomous Database
+
+  autonomous_database_admin_password:
+    type: string
+    required: true
+    title: Database password
+    description: Passwords must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number.  The password cannot contain the double quote (") character or the username "admin".
+    pattern: (?=^.{12,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$
+
+  vncpasswd:
+    type: string
+    required: true
+    title: VNC Password
+    description: Create new vnc password and we will use it in later steps
+
+  vcn_display_name:
+    type: string
+    required: true
+    title: VCN Display Name
+    description: Display name assigned for the VCN
+
+  internet_gateway_display_name:
+    type: string
+    required: true
+    title: IGW Name
+    description: Display name of the Internet Gateway from the VCN
+
+  subnet_display_name:
+    type: string
+    required: true
+    title: Subnet Name
+    description: Display name of the Subent in the VCN
+
+  oci_identity_availability_domain:
+    type: oci:identity:availabilitydomain:name
+    required: true
+    visibile: true
+    title: "Availability Domain to be chosen"
+    description: "Availability Domain to be chosen"
+    dependsOn:
+      compartmentId: compartment_ocid
+
+  bucket_name:
+    type: string
+    required: true
+    title: Bucket Name
+    description: Display name of the Object Storage Bucket
+
+  instance_shape:
+    type: oci:core:instanceshape:name
+    title: "Instance Shape"
+    description: "A shape is a template that determines the number of CPUs, amount of memory, and other resources allocated to a newly created instance."
+    required: true
+    default: "VM.Standard2.1"
+    dependsOn:
+      compartmentId: compartment_ocid
+
+  instance_shape_config_ocpus:
+    type: number
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 1
+    title: "Flex Shape OCPUs"
+    description: "Choose number of OCPUs for Flex Shape."
+    visible:
+      and:
+        - or:
+            - eq:
+                - instance_shape
+                - "VM.Standard.E3.Flex"
+            - eq:
+                - instance_shape
+                - "VM.Standard.E4.Flex"
+            - eq:
+                - instance_shape
+                - "VM.Standard.A1.Flex"
+            - eq:
+                - instance_shape
+                - "VM.Optimized3.Flex"
+
+  instance_shape_config_memory_in_gbs:
+    type: number
+    minimum: 1
+    maximum: 1024
+    multipleOf: 1
+    default: 10
+    title: "Flex Shape Memory (GB)"
+    description: "Choose number GB for Flex Shape Memory."
+    visible:
+      and:
+        - or:
+            - eq:
+                - instance_shape
+                - "VM.Standard.E3.Flex"
+            - eq:
+                - instance_shape
+                - "VM.Standard.E4.Flex"
+            - eq:
+                - instance_shape
+                - "VM.Standard.A1.Flex"
+            - eq:
+                - instance_shape
+                - "VM.Optimized3.Flex"
