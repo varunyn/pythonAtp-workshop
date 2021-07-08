@@ -9,56 +9,7 @@
 
 In Lab 2 you also continue to play the role of Derek, but now you get to the fun part, building out Python apps.  You have been asked to enhance the customer experience by providing customer access to modify their profiles and enable customers to maintain their own profiles.  You will use Oracle's cx_Oracle Python interface to enable connectivity to the Autonomous Transaction Processing Database, and use the open source technologies Flask micro web framework, Bokeh interactive visualization library, and ReactJS  to support web site development.
 
-## **Step 1:** Retrieve your ATP Wallet
-
-1. Open a browser on your Developer Cloud Image, log into your cloud console (cloud.oracle.com), and login.
-
-  ![](images/001.png " ")
-
-  ![](images/002.png " ")
-
-2. Navigate to your ATP instance.
-
-  ![](images/003.png " ")
-
-3. Select your `AlphaOffice` instance.  Be sure you are in your `python4dev` compartment.
-
-  ![](images/004.png " ")
-
-4. Select `DB Connection` and then select `Download Wallet`.
-
-  ![](images/005.png " ")
-
-  ![](images/006.png " ")
-
-  ![](images/007.png " ")
-
-  ![](images/008.png " ")
-
-5. Go to the image desktop and open a terminal window, 
-
-  ![](images/009.png " ")
-
-6. Enter the following to copy lab-resources to the opc home directory and then unzip and move the wallet to the Oracle instant client directory.
-  ```
-  <copy>cp -r /tmp/lab-resources .
-  cd Downloads
-  unzip /home/opc/Downloads/Wallet_orcl4py.zip
-  sudo chown oracle /home/opc/Downloads/*
-  sudo chgrp oinstall /home/opc/Downloads/*
-  sudo cp /home/opc/Downloads/* /lib/oracle/21/client64/lib/network/admin
-  </copy>
-  ```
-
-  ```
-  <copy>
-  sudo sh -c "echo /usr/lib/oracle/21/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf"
-  sudo ldconfig
-  export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib:$LD_LIBRARY_PATH
-  </copy>
-  ```
-
-## **Step 2:** Configure project in Visual Studio Code
+## **Step 1:** Configure project in Visual Studio Code
 
 1. First we add the Visual Studio Code in the favorites so it can be easily accessible. Click on **Applications** and then click on **Activity Overview**
 
@@ -127,7 +78,7 @@ In Lab 2 you also continue to play the role of Derek, but now you get to the fun
 
   ![](images/8.png " ")
 
-## **Step 3:** Run python web service
+## **Step 2:** Run python web service
 
 1. Leave the terminal open. Click on **config.py** file from the left pane and change the password in the file with your Autonomous Transaction Processing Database password and save the file.
 
@@ -142,7 +93,7 @@ In Lab 2 you also continue to play the role of Derek, but now you get to the fun
     
   ![](images/11.png " ")
 
-## **Step 4:** Run frontend application
+## **Step 3:** Run frontend application
 
 1. Open **customwebapp** in Visual Studio Code by opening the project in a new window: click on **File** and then click on **New Window**. The frontend application is created using ReactJS.
 
@@ -172,7 +123,7 @@ In Lab 2 you also continue to play the role of Derek, but now you get to the fun
 
 ![](images/13.png " ")
 
-## **Step 5:** Create and view customer info
+## **Step 4:** Create and view customer info
 
 1. Open the browser and go to localhost:3000 to see the website.  Put the customer ID in the search bar. Here for example we entered 1 and then click on **search**.
 
@@ -207,8 +158,8 @@ Please proceed to the next lab.
 
 ## Acknowledgements
 
-- **Authors/Contributors** - Derrick Cameron
-- **Last Updated By/Date** - Kay Malcolm, April 2020
+- **Authors/Contributors** - Derrick Cameron, Varun Yadav
+- **Last Updated By/Date** - Varun Yadav, July 2021
 - **Workshop Expiration Date** - April 31, 2021
 
 

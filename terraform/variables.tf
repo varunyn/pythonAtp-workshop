@@ -84,3 +84,7 @@ variable "ssh_public_key" {
   default     = ""
   description = "public SSH Key to be uploaded into compute instances"
 }
+
+variable "autonomous_database_wallet_generate_type" {
+  default = "SINGLE"
+}

@@ -23,6 +23,14 @@ resource "oci_database_autonomous_database" "test_autonomous_database" {
   display_name = var.autonomous_database_display_name
 }
 
+## DB Wallet
+resource "oci_database_autonomous_database_wallet" "autonomous_database_wallet" {
+  autonomous_database_id = oci_database_autonomous_database.test_autonomous_database.id
+  password               = random_string.autonomous_database_wallet_password.result
+  generate_type          = var.autonomous_database_wallet_generate_type
+  base64_encode_content  = true
+}
+
 output "database_password" {
   value       = var.autonomous_database_admin_password
   description = "Database Password. Please keep a note of it."

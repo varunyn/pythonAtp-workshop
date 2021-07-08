@@ -20,13 +20,15 @@ To deploy these services, you will be using Terraform, a tool for building, chan
 
 Terraform provides a reusable process for creating infrastructure.  In some cases, like this one, you don't have to know anything about how the process works. You can deploy different pre-designed infrastructure designs for many different purposes, which frees up users to focus on their projects.  This will create your cloud resources (VCN, Compute Image, Autonomous Transaction Processing Instance, among other things).
 
-1.  There are two options for running the the workshop labs.  One uses the always free services (compute and ATP) and the other uses non-free services.  You may wish to use the always free version, but if you are already using your always free version, or multiple users are running the workshop in a single tenancy you will need to use the non-free version.  Download either the [free terraform zip file](https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/python4atp/o/python4atp-tf-free.zip) or the [non-free terraform zip file](https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/python4atp/o/python4atp-tf.zip).
+1.  There are two options for running the the workshop labs.  One uses the always free services (compute and ATP) and the other uses non-free services.  You may wish to use the always free version, but if you are already using your always free version, or multiple users are running the workshop in a single tenancy you will need to use the non-free version.
 
-2. Log into the Oracle Cloud and on the OCI console, click on the hamburger menu upper left and scroll down to **Solutions and Platform**. Hover over **Resource Manager** and click on **Stacks**.
+2.   Click  [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://console.us-ashburn-1.oraclecloud.com/resourcemanager/stacks/create?region=home&zipUrl=https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/python4atp/o/tf-v1.1.zip)
+
+3. Log into the Oracle Cloud and on the OCI console, click on the hamburger menu upper left and scroll down to **Solutions and Platform**. Hover over **Resource Manager** and click on **Stacks**.
 
    ![](images/010.png " ")
 
-3. Make sure the **Compartment** on the left side says root. If not, then change it to root. Then, click **Create Stack**.
+4. Make sure the **Compartment** on the left side says root. If not, then change it to root. Then, click **Create Stack**.
 
   ![](images/011.png " ")
 

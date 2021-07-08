@@ -2,6 +2,27 @@ resource "tls_private_key" "public_private_key_pair" {
   algorithm = "RSA"
 }
 
+# data "template_file" "user_data" {
+#   template = file("./scripts/script.sh")
+
+#   vars = {
+#     name           = var.instance_display_name
+#     ssh_public_key = tls_private_key.public_private_key_pair.public_key_openssh
+#   }
+# }
+
+# data "template_cloudinit_config" "cloud_init" {
+#   gzip          = true
+#   base64_encode = true
+
+#   part {
+#     filename     = "ainit.sh"
+#     content_type = "text/x-shellscript"
+#     content      = data.template_file.user_data.rendered
+#   }
+# }
+
+
 # Dictionary Locals
 locals {
   compute_flexible_shapes = [
@@ -25,6 +46,8 @@ resource "oci_core_instance" "developer_instance" {
 
   metadata = {
     ssh_authorized_keys = var.ssh_public_key == "" ? tls_private_key.public_private_key_pair.public_key_openssh : var.ssh_public_key
+    user_data           = data.template_cloudinit_config.cloud_init.rendered
+
   }
 
   dynamic "shape_config" {
@@ -55,9 +78,8 @@ output "instance_public_ips" {
   value       = oci_core_instance.developer_instance.*.public_ip
   description = "Public IP address of the Compute Instance"
 }
-
 output "instance_ssh_keys" {
-  value       = tls_private_key.public_private_key_pair.private_key_pem
+  value       = var.ssh_public_key == "" ? tls_private_key.compute_ssh_key.private_key_pem : "No Keys Auto Generated"
+  sensitive   = true
   description = "Please copy and save the private key to ssh in compute instance"
 }
-

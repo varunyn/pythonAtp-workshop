@@ -1,0 +1,11 @@
+#cloud-config
+
+write_files:
+  - path: "/root/deploy.sh"
+    permissions: "0777"
+    encoding: "gzip+base64"
+    content: |
+      ${deploy_template}
+
+runcmd:
+  - bash -x /root/deploy.sh 2>&1 | tee -a /root/deploy.log

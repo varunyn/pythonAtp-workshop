@@ -10,6 +10,8 @@ variableGroups:
     variables:
       - tenancy_ocid
       - region
+      - autonomous_database_wallet_generate_type
+      # - Use_marketplace_image
 
   - title: Required Variables
     visible: true
@@ -18,6 +20,7 @@ variableGroups:
       - oci_identity_availability_domain
       - vncpasswd
       - autonomous_database_admin_password
+      - show_advanced
 
   - title: Compute
     visible:
@@ -31,14 +34,18 @@ variableGroups:
       - ssh_public_key
 
   - title: Network
-    visible: true
+    visible:
+      and:
+        - show_advanced
     variables:
       - vcn_display_name
       - internet_gateway_display_name
       - subnet_display_name
 
   - title: Database
-    visible: true
+    visible:
+      and:
+        - show_advanced
     variables:
       - autonomous_database_display_name
       - autonomous_database_db_name
@@ -47,11 +54,20 @@ variableGroups:
       - autonomous_database_db_workload
 
   - title: Object Storage
-    visible: true
+    visible:
+      and:
+        - show_advanced
     variables:
       - bucket_name
 
 variables:
+  show_advanced:
+    type: boolean
+    title: "Show advanced options?"
+    description: "Shows advanced options."
+    visible: true
+    default: false
+
   autonomous_database_data_storage_size_in_tbs:
     type: string
     required: true

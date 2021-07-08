@@ -11,9 +11,9 @@ data "oci_core_app_catalog_listing_resource_versions" "test_CloudDevImg_catalog_
   listing_id = data.oci_core_app_catalog_listings.CloudDevImg_catalog_listings.app_catalog_listings[0]["listing_id"] //The OCID of the listing.
 }
 
-variable "use_marketplace_image" {
-  default = 1
-}
+# variable "use_marketplace_image" {
+#   default = 1
+# }
 
 #Get Image Agreement 
 resource "oci_core_app_catalog_listing_resource_version_agreement" "mp_image_agreement" {
