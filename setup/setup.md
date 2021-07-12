@@ -24,17 +24,11 @@ Terraform provides a reusable process for creating infrastructure.  In some case
 
 2.   Click  [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://console.us-ashburn-1.oraclecloud.com/resourcemanager/stacks/create?region=home&zipUrl=https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/python4atp/o/tf-v1.1.zip)
 
-3. Log into the Oracle Cloud and on the OCI console, click on the hamburger menu upper left and scroll down to **Solutions and Platform**. Hover over **Resource Manager** and click on **Stacks**.
 
-   ![](images/010.png " ")
-
-4. Make sure the **Compartment** on the left side says root. If not, then change it to root. Then, click **Create Stack**.
+3. Make sure the **Compartment** on the left side says root. If not, then change it to root. Then, click **Create Stack**.
 
   ![](images/011.png " ")
 
-4. Select **My Configuration**, choose the **.ZIP FILE** button, Click on **Browse** and find the zipped **python4atp-tf-free.zip** or **python4atp-tf.zip** file if using the non-free version. 
-
-  ![](./images/zip-file.png)
 
   Then, you can give your **Stack** a name (or accept default). You can also give a description if you'd like, but it is not necessary. Then click **Next**.
 
@@ -278,8 +272,7 @@ Please proceed to the next lab.
 ## Acknowledgements
 
 - **Authors/Contributors** - Derrick Cameron
-- **Last Updated By/Date** - Kay Malcolm, April 2020
-- **Workshop Expiration Date** - April 31, 2021
+- **Last Updated By/Date** - Varun Yadav, July 2021
 
 
 
